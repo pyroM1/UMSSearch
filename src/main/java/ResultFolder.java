@@ -5,28 +5,44 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
 import net.pms.PMS;
 import net.pms.dlna.RealFile;
 import net.pms.dlna.virtual.VirtualFolder;
 import net.pms.formats.Format;
 import net.pms.formats.FormatFactory;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 /** Folder inspector. */
 public class ResultFolder extends VirtualFolder {
 
 	/** Logger. */
-	private static final Logger logger = LoggerFactory.getLogger(KeyboardRequester.class);
+	private static final Logger logger = LoggerFactory.getLogger(ResultFolder.class);
 
 	/** Current request. */
 	private String request = null;
 
-	/** Constructor. */
-	public ResultFolder(String name, String thumbnailIcon, String request) {
+	/** Options. */
+	private Options options = null;
+
+	/**
+	 * Constructor.
+	 * 
+	 * @param name
+	 *            Name of folder.
+	 * @param thumbnailIcon
+	 *            Thumbnail icon.
+	 * @param Options
+	 *            Options.
+	 * @param request
+	 *            Request patern.
+	 */
+	public ResultFolder(String name, String thumbnailIcon, Options options, String request) {
 		super(name, thumbnailIcon);
 		this.request = request;
+		this.options = options;
+		logger.warn("isIncludeFolder: " + options.isIncludeFolder());
 	}
 
 	/** {@inheritDoc} */
@@ -56,7 +72,9 @@ public class ResultFolder extends VirtualFolder {
 
 		for (File current : lFiles) {
 			String name = current.getName().toLowerCase();
-			if (name.matches(".*" + request + ".*")) {
+			String path = current.getPath().toLowerCase();
+			if (name.matches(".*" + request + ".*")
+					|| (options.isIncludeFolder() && path.matches(".*" + request + ".*"))) {
 				Format format = FormatFactory.getAssociatedFormat(name);
 				if (format != null && format.isVideo()) {
 					this.addChild(new RealFile(current));
