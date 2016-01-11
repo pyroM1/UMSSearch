@@ -42,7 +42,7 @@ public class ResultFolder extends VirtualFolder {
 		super(name, thumbnailIcon);
 		this.request = request;
 		this.options = options;
-		logger.warn("isIncludeFolder: " + options.isIncludeFolder());
+		logger.trace("isIncludeFolder: " + options.isIncludeFolder());
 	}
 
 	/** {@inheritDoc} */

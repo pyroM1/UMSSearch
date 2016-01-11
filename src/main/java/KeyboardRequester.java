@@ -44,7 +44,6 @@ public class KeyboardRequester extends VirtualFolder {
 	@Override
 	public void discoverChildren() {
 		logger.trace("discoverChildren()");
-		logger.debug("includeFolder: " + options);
 		addChild(new KeyboardRequester("[abc]", null, options, request));
 		addChild(new KeyboardRequester("[def]", null, options, request));
 		addChild(new KeyboardRequester("[ghi]", null, options, request));
