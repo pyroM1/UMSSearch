@@ -47,10 +47,10 @@ public class KeyboardRequester extends VirtualFolder {
 		addChild(new KeyboardRequester("[abc]", null, options, request));
 		addChild(new KeyboardRequester("[def]", null, options, request));
 		addChild(new KeyboardRequester("[ghi]", null, options, request));
-		addChild(new KeyboardRequester("[klm]", null, options, request));
-		addChild(new KeyboardRequester("[nop]", null, options, request));
-		addChild(new KeyboardRequester("[qrs]", null, options, request));
-		addChild(new KeyboardRequester("[tuv]", null, options, request));
+		addChild(new KeyboardRequester("[jkl]", null, options, request));
+		addChild(new KeyboardRequester("[mno]", null, options, request));
+		addChild(new KeyboardRequester("[pqr]", null, options, request));
+		addChild(new KeyboardRequester("[stuv]", null, options, request));
 		addChild(new KeyboardRequester("[wxyz]", null, options, request));
 		addChild(new KeyboardRequester("[. _-]", null, options, request));
 		addChild(new KeyboardRequester("[0-9]", null, options, request));
